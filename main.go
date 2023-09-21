@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 )
 
 func main() {
@@ -26,6 +27,10 @@ func main() {
 		fmt.Printf("read content failed:%v", err)
 		return
 	}
-	fmt.Println("body:", string(body))
+	//fmt.Println("body:", string(body))
+	numlinks := strings.Count(string(body), "<a")
+	fmt.Printf("homepage has %d links.\n", numlinks)
+	exist := strings.Contains(string(body), "疫情")
+	fmt.Printf("是否存在疫情：%v\n", exist)
 
 }
